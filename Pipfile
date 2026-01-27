@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sentencepiece = "*"
+numpy = "*"
+tqdm = "*"
+regex = "*"
+pandas = "*"
+torch = "*"
+torchvision = "*"
+torchaudio = "*"
+matplotlib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

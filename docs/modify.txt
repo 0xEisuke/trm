@@ -1,0 +1,104 @@
+✅ Codex への指示書（train_trm_lm.py に学習曲線可視化機能を追加せよ）
+
+以下の内容を そのまま Codex に送ってください。
+
+📄 指示書：train_trm_lm.py に学習曲線の可視化（loss/ce/act）を追加してください
+
+I want to extend train_trm_lm.py to automatically generate training-curve plots at the end of training.
+
+要求仕様
+✔ 1. ログ値の記録
+
+During training, store the following metrics after each logging step:
+
+loss
+
+ce_loss
+
+act_loss
+
+step
+
+These values should be appended to lists, e.g.:
+
+steps = []
+losses = []
+ce_losses = []
+act_losses = []
+
+
+Populate them at each log_every interval.
+
+✔ 2. 学習終了後に折れ線グラフを生成
+
+After training completes (just before exiting), generate a plot using matplotlib:
+
+横軸：step
+
+縦軸：値（loss, ce_loss, act_loss）
+
+3本の折れ線を1枚の figure にまとめる
+
+凡例あり
+
+タイトル：「Training Curves」
+
+日本語フォント指定（例：MS Gothic）
+
+plt.rcParams["font.family"] = "MS Gothic"
+
+✔ 3. プロット画像を save_dir に保存
+
+File name:
+
+{save_dir}/training_curves.png
+
+
+Use:
+
+plt.savefig(os.path.join(args.save_dir, "training_curves.png"))
+
+
+Also call:
+
+plt.close()
+
+
+at the end.
+
+✔ 4. 必要ライブラリの import
+
+Make sure these are added at top of train_trm_lm.py:
+
+import matplotlib.pyplot as plt
+import os
+
+✔ 5. 既存の動作を壊さないこと
+
+Training loop, checkpoint saving, evaluation, EMA updates, TRM recursion behavior、すべてそのまま維持。
+
+ログの出力方法は変更しない。
+
+train loop に軽負荷の処理のみ追加すること。
+
+📌 最終目的
+
+When training finishes, the directory:
+
+--save_dir checkpoints_spm
+
+
+should contain:
+
+step_XXXX.pt (checkpoints)
+
+final_step_XXXX.pt
+
+training_curves.png ← 新たに追加する画像
+
+This PNG file should clearly show whether training is stable.
+
+✅ 以上の仕様に基づいて train_trm_lm.py を修正してください。
+必要なら、私側で「最終的な完成版コード」をレビューできます。
+
+Codex が生成したら貼り付けてください。

@@ -1,0 +1,21 @@
+# Large Data and Models
+data/
+checkpoints/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Agent/Editor configurations
+.gemini/
+.vscode/
+.idea/
+
+# Environment
+.env
+.venv/
+env/
