@@ -1,8 +1,12 @@
 import gzip
 import json
 
-# train_0 から train_10 までを全て処理
-train_files = [f"train_{i}.jsonl.gz" for i in range(11)]
+from pathlib import Path
+
+# data/train 以下の全てのファイルを再帰的に取得
+# (ccフォルダ, wikiフォルダ等に含まれる全ファイル)
+data_root = Path("data/train")
+train_files = sorted([str(p) for p in data_root.glob("**/*") if p.is_file() and p.name != ".DS_Store"])
 out_path = "train_texts.txt"
 
 with open(out_path, "w", encoding="utf-8") as f_out:
